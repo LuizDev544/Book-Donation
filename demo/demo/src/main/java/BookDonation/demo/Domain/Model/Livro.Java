@@ -1,24 +1,22 @@
 @Entity
 @Table(name = "livros")
-@NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA feliz, mas ninguém mais cria livro vazio
-@Getter // Use com moderação
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Encapsulando primitivos (Value Objects)
     @Embedded
     private Titulo titulo; 
 
     @Embedded
-    private InfoLivro informacoes; // Agrupando campos relacionados (Regra: No classes with more than 5 instance variables)
+    private InfoLivro informacoes; 
 
     @Enumerated(EnumType.STRING)
     private StatusLivro condicao;
 
-    // Construtor que garante que o livro já nasce válido
     public Livro(Titulo titulo, InfoLivro informacoes) {
         this.titulo = Objects.requireNonNull(titulo);
         this.informacoes = Objects.requireNonNull(informacoes);
