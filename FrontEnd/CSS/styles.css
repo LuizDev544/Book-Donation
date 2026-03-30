@@ -1,0 +1,16 @@
+:root {
+    --Fundo: #315daf;
+    --Fundo2: #273d66;
+    --NavBar: #162e49;
+    --Butao: #53a2fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+}
