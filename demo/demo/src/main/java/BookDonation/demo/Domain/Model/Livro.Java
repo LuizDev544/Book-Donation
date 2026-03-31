@@ -1,3 +1,10 @@
+package BookDonation.demo.Domain.Model;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.Objects;
+import BookDonation.demo.Domain.Model.ValueObjects.*;
+
 @Entity
 @Table(name = "livro")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -11,7 +18,7 @@ public class Livro {
     @Column(nullable = false)
     private String titulo;
 
-    @Embedded // <-- Ele CONFIA que vai receber o valor certo 
+    @Embedded
     private Autor autor;
 
     @Embedded
@@ -19,6 +26,10 @@ public class Livro {
 
     @Enumerated(EnumType.STRING)
     private StatusLivro condicao;
+
+    public Long getId() {
+        return this.id;
+    }
 
     public Livro(String titulo, Autor autor, DetalhesLivros detalhes) {
         this.titulo = Objects.requireNonNull(titulo, "Título é obrigatório");
@@ -28,7 +39,7 @@ public class Livro {
     }
 
     public void marcarComoDoado() {
-        if (this.condicao == StatusLivro.DOADO) {
+        if (this.condicao.equals(StatusLivro.DOADO)) {
             throw new IllegalStateException("Livro já foi doado.");
         }
         this.condicao = StatusLivro.DOADO;

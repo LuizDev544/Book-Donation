@@ -2,9 +2,8 @@ package BookDonation.demo.Domain.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import BookDonation.demo.Domain.Model.Livro;
+import BookDonation.demo.Domain.Model.Admin;
 
-@Repository
-public interface LivroRepository extends JpaRepository<Livro, Long> {
-    
+public interface AdminRepository extends JpaRepository<Admin , String> {
+
 }
