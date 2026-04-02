@@ -1,7 +1,7 @@
-package BookDonation.demo.presentation.Controller
+package BookDonation.demo.presentation.Controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import BookDonation.demo.Domain.Service.LivroService;
 @RestController
 @RequestMapping("/api")
 public class LivroController {
+
+    private final LivroService service;
 
     public LivroController(LivroService service) {
         this.service = service;
