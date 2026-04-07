@@ -1,50 +1,25 @@
 package BookDonation.demo.presentation.Controller;
 
+import BookDonation.demo.presentation.DTO.LivroRequestDTO;
+import BookDonation.demo.Domain.Service.LivroService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import BookDonation.demo.Domain.Model.Livro;
-import BookDonation.demo.Domain.Service.LivroService;
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/livros")
 public class LivroController {
 
-    private final LivroService service;
+    @Autowired
+    private LivroService livroService;
 
-    public LivroController(LivroService service) {
-        this.service = service;
+    @PostMapping
+    public ResponseEntity<?> cadastrar(@RequestBody LivroRequestDTO dto) {
+        try {
+            var livroCriado = livroService.criarLivro(dto);
+            return ResponseEntity.ok("Livro criado com ID: " + livroCriado.getId());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
-
-    @GetMapping("/public/livros")
-    public ResponseEntity<List<Livro>> listar() {
-        return ResponseEntity.ok(service.listar());
-    }
-
-     @GetMapping("/admin/livros/{id}")
-    public ResponseEntity<Livro> buscarPorId(@PathVariable Long id) {
-        return ResponseEntity.ok(service.buscarPorId(id));
-    }
-
-    @PostMapping("/admin/livros")
-    public ResponseEntity<Livro> criar(@RequestBody Livro livro) {
-        return ResponseEntity.ok(service.salvar(livro));
-    }
-
-    @PutMapping("/admin/livros/{id}")
-    public ResponseEntity<Livro> atualizar(
-            @PathVariable Long id,
-            @RequestBody Livro livro) {
-
-        return ResponseEntity.ok(service.atualizar(id, livro));
-    }
-
-    @DeleteMapping("/admin/livros/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        service.deletar(id);
-        return ResponseEntity.noContent().build();
-    }
-
 }

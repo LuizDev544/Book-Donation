@@ -43,4 +43,9 @@ public class Livro {
         this.pagina = pagina;
         this.status = status;
     }
+
+    public Long getId() {
+        return id;
+    }
+    
 }

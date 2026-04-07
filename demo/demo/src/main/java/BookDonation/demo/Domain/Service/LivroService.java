@@ -1,49 +1,29 @@
 package BookDonation.demo.Domain.Service;
 
+import BookDonation.demo.Domain.Model.Livro;
+import BookDonation.demo.Domain.Model.ValueObjects.*;
+import BookDonation.demo.Domain.Repository.LivroRepository;
+import BookDonation.demo.presentation.DTO.LivroRequestDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-import BookDonation.demo.Domain.Model.Livro;
-import BookDonation.demo.Domain.Repository.LivroRepository;
-import BookDonation.demo.infrastructure.Exception.*;
-
 @Service
-public class LivroService{
+public class LivroService {
 
-    private final LivroRepository repository;
+    @Autowired
+    private LivroRepository livroRepository;
 
-    public LivroService(LivroRepository repository){
-        this.repository = repository;
+    public Livro criarLivro(LivroRequestDTO dto) {
+        AnoLivro ano        = new AnoLivro(dto.anoLancamento());
+        Autor autor         = new Autor(dto.nomeAutor());
+        Descricao descricao = new Descricao(dto.textoDescricao());
+        Genero genero       = new Genero(dto.nomeGenero());
+        Idioma idioma       = new Idioma(dto.nomeIdioma());
+        Pagina pagina       = new Pagina(dto.quantidadePaginas());
+        StatusLivro status  = new StatusLivro(dto.statusInicial());
+
+        Livro novoLivro     = new Livro(ano, autor, descricao, genero, idioma, pagina, status);
+
+        return livroRepository.save(novoLivro);
     }
-
-    public List<Livro> listar() {
-        return repository.findAll();
-    }
-
-    public Livro salvar(Livro livro) {
-        return repository.save(livro);
-    }
-
-    public Livro buscarPoID(Long id) {
-        return repository.findById(id)
-            .orElseThrow(() -> new LivroNaoEncontrado(id));
-    }
-
-    public void deletar(Long id) {
-        if (!repository.existsById(id)) {
-            throw new LivroNaoEncontrado(id);
-
-            repository.deleteAllById(id);
-        }
-    }
-
-    public Livro atualizar(Long id, Livro novoLivro) {
-        Livro livroExistente = buscarPoID(id);
-
-        livroExistente.atualizarDados(novoLivro);
-
-        return repository.save(livroExistente);
-    }
-
 }

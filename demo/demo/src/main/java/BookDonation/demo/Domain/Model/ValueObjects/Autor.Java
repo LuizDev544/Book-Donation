@@ -8,6 +8,8 @@ public class Autor {
 
     private String nome;
 
+    protected Autor() {}
+
     public Autor(String nome) {
         if (nome == null || nome.trim().isEmpty()) {
             throw new IllegalArgumentException("Nome do Autor tá vazio");

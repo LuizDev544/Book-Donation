@@ -8,6 +8,8 @@ public class Pagina {
 
     private int paginas;
 
+    protected Pagina() {}
+
     public Pagina(int  paginas) {
         if (paginas <= 0) {
             throw new IllegalArgumentException("Número de páginas inválido. Deve ser um valor positivo.");

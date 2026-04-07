@@ -4,22 +4,20 @@ import java.time.LocalDate;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-
 public class AnoLivro {
 
     private int ano;
 
+    protected AnoLivro() {}
+
     public AnoLivro(int ano) {
-        int anoAtual = LocalDate.now().getYear();
-        
-        if (ano <= 0 || ano > anoAtual) {
-            throw new IllegalArgumentException("Ano do livro inválido. O ano deve ser entre 1 e " + anoAtual);
+        if (ano <= 0 || ano > 2026) { 
+            throw new IllegalArgumentException("Ano do Livro inválido");
         }
-        
         this.ano = ano;
     }
-
-    public int getAno() {
-        return ano;
+    
+    public int getAno(){ 
+        return ano; 
     }
 }

@@ -8,6 +8,8 @@ public class Idioma {
 
     private String idioma;
 
+    protected Idioma() {}
+
     public Idioma(String idioma) {
         if (idioma == null || idioma.trim().isEmpty()) {
             throw new IllegalArgumentException("Idioma do livro não pode ser vazio.");

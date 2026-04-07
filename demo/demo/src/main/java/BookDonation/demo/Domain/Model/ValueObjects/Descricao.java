@@ -9,6 +9,8 @@ public class Descricao {
 
     private String descricao;
 
+    protected Descricao() {}
+
     public Descricao(String Descricao) {
         if (Descricao == null || Descricao.trim().isEmpty()) {
             throw new IllegalArgumentException("Descricao do Autor tá vazio");
