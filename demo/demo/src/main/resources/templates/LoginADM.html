@@ -9,35 +9,29 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-
     <header class="navbar">
         <h1>Vulture Books</h1>
         
         <img src="Imagens/Urubu2.png" alt="" width="100px">
     </header>
-    
     <div class="login-wrapper">
         <div class="login-container">
             <h2>Login Admin</h2>
-
-            <form>
+            <form action="/admin/login" method="POST">
                 <div class="input-group">
                     <b><label>Email</label></b>
-                    <input type="email" placeholder="Digite seu email" required>
+                    <input type="email" name="email" placeholder="Digite seu email" required>
                 </div>
-
                 <div class="input-group">
                     <b><label>Senha</label></b>
-                    <input type="password" placeholder="Digite sua senha" required>
+                    <input type="password" name="senha" placeholder="Digite sua senha" required>
                 </div>
-
-                <button class="login-btn">Entrar</button>
+                <button type="submit" class="login-btn">Entrar</button>
             </form>
             <div class="footer">
                 <b>Sistema de Doação de Livros</b>
             </div>
         </div>
     </div>
-    
 </body>
 </html>

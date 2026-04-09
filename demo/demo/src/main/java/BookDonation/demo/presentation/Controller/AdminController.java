@@ -17,7 +17,7 @@ public class AdminController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "login"; 
+        return "LoginAdm"; 
     }
 
     @PostMapping("/login")
@@ -25,11 +25,11 @@ public class AdminController {
         if (adminService.validarAcesso(email, senha)) {
             return "redirect:/admin/painel";
         }
-        return "login";
+        return "LoginAdm";
     }
 
     @GetMapping("/painel")
     public String painelPage() {
-        return "painel"; 
+        return "PainelAdm"; 
     }
 }
