@@ -1,103 +1,81 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  }
-
-.navbar {
-    width: 100%;
-    padding: 15px;
-    background:var(--NavBar);
-    color: white;
-
+/* Container que ocupa a tela toda */
+.login-wrapper {
+    height: 100vh;
+    background: linear-gradient(135deg, var(--fundo-primario) 0%, var(--fundo-secundario) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-
-    gap: 10px;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-size: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-.navbar img {
-    height: 100px;
-}
-
-.navbar h1 {
-    font-size: 45px;
-    margin: 0;
-}
-
-.login-wrapper {
-  height: 100vh;
-  background: linear-gradient(0deg, #0455ce 0%, #8bb7ff 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 60px;
-}
-
+/* Card de Login */
 .login-container {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  width: 320px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: var(--borda-raio);
+    width: 100%;
+    max-width: 350px;
+    box-shadow: var(--sombra);
+    text-align: center;
 }
 
 .login-container h2 {
-  margin-bottom: 20px;
-  color: #53a2fc;;
+    margin-bottom: 25px;
+    color: var(--fundo-primario);
+    font-weight: 600;
 }
 
+/* Grupos de Input */
 .input-group {
-  margin-bottom: 15px;
-  text-align: left;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .input-group label {
-  font-size: 14px;
-  color: #333;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
 }
 
 .input-group input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: 0.3s;
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .input-group input:focus {
-  border-color: #53a2fc;
+    border-color: var(--botao-acao);
+    box-shadow: 0 0 5px rgba(83, 162, 252, 0.3);
 }
 
+/* Botão Estilizado */
 .login-btn {
-  width: 100%;
-  padding: 12px;
-  background: #53a2fc;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+    width: 100%;
+    padding: 14px;
+    background: var(--botao-acao);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
 }
 
 .login-btn:hover {
-  background: #53a2fc;
+    background: #418de0;
+    transform: translateY(-2px);
+}
+
+.login-btn:active {
+    transform: translateY(0);
 }
 
 .footer {
-  margin-top: 15px;
-  font-size: 12px;
-  color: #777;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
 }

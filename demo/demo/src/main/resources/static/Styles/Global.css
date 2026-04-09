@@ -1,0 +1,45 @@
+/* Variáveis de Design */
+:root {
+    --fundo-primario: #315daf;
+    --fundo-secundario: #273d66;
+    --navbar-bg: #162e49;
+    --botao-acao: #53a2fc;
+    --texto-claro: #ffffff;
+    --texto-escuro: #333333;
+    --borda-raio: 8px;
+    --sombra: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif; /* Fonte mais moderna */
+}
+
+body {
+    background-color: var(--fundo-primario);
+    color: var(--texto-escuro);
+    line-height: 1.6;
+}
+
+/* Componentes Globais (Ex: Navbar que aparece em várias telas) */
+.navbar {
+    width: 100%;
+    padding: 15px;
+    background: var(--navbar-bg);
+    color: var(--texto-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.navbar img { height: 60px; } /* Ajustado para não ocupar a tela toda */
+.navbar h1 { font-size: 24px; }
