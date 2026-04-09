@@ -1,64 +1,33 @@
 package BookDonation.demo.Domain.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
+import BookDonation.demo.Domain.Model.ValueObjects.Email;
+import BookDonation.demo.Domain.Model.ValueObjects.Senha;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "admin") 
-@Getter
-@NoArgsConstructor
-public class Admin {
+@Table(name = "admin")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String email;
-    private String senha;
-    private String nome;
-
-    @Column(nullable = false)
-    private String role = "ROLE_ADMIN";
-}
-
-/*
-
-@Entity
-@Table(name = "admins") // Plural é uma boa prática para nomes de tabela
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED) // Protege o construtor vazio para uso exclusivo do JPA
-@AllArgsConstructor
-@Builder // Design Pattern: Builder para facilitar a criação de objetos complexos
 public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private String email;
+    @Embedded
+    private Email email;
 
-    @Column(nullable = false)
-    private String password; // Alterado para inglês e mantendo padrão camelCase
+    @Embedded
+    private Senha senha;
 
-    @Column(nullable = false, length = 150)
-    private String name;
-
-    @Column(nullable = false, length = 20)
-    private String role = "ROLE_ADMIN";
-
-    // Exemplo de regra do Object Calisthenics: encapsular comportamento
-    public void updateName(String newName) {
-        if (newName == null || newName.isBlank()) {
-            throw new IllegalArgumentException("O nome não pode ser vazio");
+    public Admin(Email email, Senha senha) {
+        if (email == null || senha == null) {
+            throw new IllegalArgumentException("Email e senha são Obrigatórios");
         }
-        this.name = newName;
+        this.email = email;
+        this.senha = senha;
     }
-}
 
-*/
+}
