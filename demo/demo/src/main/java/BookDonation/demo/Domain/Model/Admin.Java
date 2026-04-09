@@ -27,4 +27,11 @@ public class Admin {
         this.senha = senha;
     }
 
+    public boolean autenticar(String senhaDigitada) {
+        if (senhaDigitada == null) {
+            return false;
+        }
+        return this.senha != null && this.senha.verificar(senhaDigitada);
+    }
+
 }
