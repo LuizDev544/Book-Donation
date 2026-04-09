@@ -14,8 +14,4 @@ CREATE TABLE livro (
     condicao VARCHAR(50)
 );
 
-create table Admin (
-
-    
-
-);
+INSERT INTO admin (endereco, senha) VALUES ('admin@doacao.com', 'admin123');
