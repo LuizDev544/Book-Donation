@@ -47,7 +47,7 @@ public class LivroController {
             
         } catch (IllegalArgumentException e) {
             attributes.addFlashAttribute("erro", "Não foi possível encontrar um livro com o ID #" + id);
-            return "redirect:/livros/painel"; // Devolve para o painel em segurança
+            return "redirect:/livros/painel"; 
         }
     }
 
@@ -85,6 +85,13 @@ public class LivroController {
             attributes.addFlashAttribute("erro", "Erro interno ao tentar excluir o livro.");
         }
         
+        return "redirect:/livros/painel"; 
+    }
+
+    @PostMapping("/disponibilizar/{id}") 
+    public String disponibilizar(@PathVariable Long id, RedirectAttributes attributes) {
+        livroService.alternarDisponibilidade(id);
+        attributes.addFlashAttribute("mensagem", "Livro liberado com sucesso!");
         return "redirect:/livros/painel"; 
     }
 }

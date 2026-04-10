@@ -35,6 +35,13 @@ public class StatusLivro {
     }
 
     public static StatusLivro valueOf(String statusInicial) {
-        throw new UnsupportedOperationException("Unimplemented method 'valueOf'");
+        return new StatusLivro(statusInicial);
+    }
+
+    public void tornarDisponivel() {
+        if (this.valor == TipoStatus.DISPONIVEL) {
+            throw new IllegalStateException("O livro já está disponível.");
+        }
+        this.valor = TipoStatus.DISPONIVEL;
     }
 }

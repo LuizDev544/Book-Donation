@@ -60,6 +60,10 @@ public class Livro {
         this.status = novoStatus;
     }
 
+    public void tornarDisponivel() {
+        this.status = StatusLivro.valueOf("DISPONIVEL");
+    }
+
     public Long getId() { return id; }
     public String getTitulo() { return titulo; }
     public AnoLivro getAno() { return ano; }
@@ -69,4 +73,5 @@ public class Livro {
     public Idioma getIdioma() { return idioma; }
     public Pagina getPagina() { return pagina; }
     public StatusLivro getStatus() { return status; }
+
 }

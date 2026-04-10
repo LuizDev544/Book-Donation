@@ -77,8 +77,16 @@
                                         <span th:if="${livro.status.valor == 'INDISPONIVEL'}" class="badge bg-secondary">Indisponível</span>
                                         <span th:if="${livro.status.valor == 'DOADO'}" class="badge bg-primary">Doado</span>
                                     </td>
+                                    <td>
+                                        <form th:if="${livro.status.valor != 'DISPONIVEL'}" 
+                                            th:action="@{/livros/disponibilizar/{id}(id=${livro.id})}" 
+                                            method="POST" style="display:inline;">
+                                            <button type="submit" class="btn btn-sm btn-outline-success">
+                                                <i class="bi bi-check-circle"></i> Liberar
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
-                                
                                 <tr th:if="${#lists.isEmpty(livros)}">
                                     <td colspan="9" class="text-center text-muted py-4">
                                         Nenhum livro cadastrado ainda.

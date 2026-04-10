@@ -60,4 +60,11 @@ public class LivroService {
     public Livro buscarPorId(Long id) {
         return livroRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Livro não encontrado no banco de dados."));
     }
+
+    @Transactional
+    public void alternarDisponibilidade(Long id) {
+        Livro livro = livroRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Livro não encontrado no banco de dados."));
+        livro.tornarDisponivel();
+    }
 }
