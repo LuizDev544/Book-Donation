@@ -1,30 +1,27 @@
-/* Container que ocupa a tela toda */
 .login-wrapper {
-    height: 100vh;
-    background: linear-gradient(135deg, var(--fundo-primario) 0%, var(--fundo-secundario) 100%);
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
-/* Card de Login */
 .login-container {
-    background: white;
+    background-color: var(--cor-card);
     padding: 40px;
     border-radius: var(--borda-raio);
     width: 100%;
-    max-width: 350px;
-    box-shadow: var(--sombra);
+    max-width: 380px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     text-align: center;
 }
 
 .login-container h2 {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     color: var(--fundo-primario);
     font-weight: 600;
 }
 
-/* Grupos de Input */
 .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -33,25 +30,24 @@
 .input-group label {
     display: block;
     font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
+    margin-bottom: 8px;
+    color: var(--texto-label);
+    font-weight: 600;
 }
 
 .input-group input {
     width: 100%;
     padding: 12px;
     border-radius: 6px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--cor-borda);
     outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: 0.3s;
 }
 
 .input-group input:focus {
     border-color: var(--botao-acao);
-    box-shadow: 0 0 5px rgba(83, 162, 252, 0.3);
 }
 
-/* Botão Estilizado */
 .login-btn {
     width: 100%;
     padding: 14px;
@@ -60,22 +56,12 @@
     border-radius: 6px;
     color: white;
     font-weight: bold;
-    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
 .login-btn:hover {
-    background: #418de0;
+    background: var(--botao-acao-hover);
     transform: translateY(-2px);
-}
-
-.login-btn:active {
-    transform: translateY(0);
-}
-
-.footer {
-    margin-top: 20px;
-    font-size: 13px;
-    color: #888;
 }

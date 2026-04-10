@@ -1,17 +1,21 @@
 body {
     overflow-x: hidden;
+    background-color: var(--fundo-pagina);
 }
 
 .sidebar {
     width: 260px;
+    background-color: var(--navbar-bg) !important;
     transition: all 0.3s;
-    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
 }
 
 .sidebar .nav-link {
-    border-radius: 8px;
+    border-radius: var(--borda-raio);
     padding: 12px 15px;
-    transition: background 0.2s;
+    color: var(--texto-claro) !important;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
 }
 
 .sidebar .nav-link:hover {
@@ -19,40 +23,37 @@ body {
 }
 
 .sidebar .nav-link.active {
-    background: #0d6efd;
+    background: var(--botao-acao);
 }
 
 .card {
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: var(--borda-raio-lg);
+    background-color: var(--cor-card);
+    border: none;
+    box-shadow: var(--sombra);
 }
 
 .table thead th {
+    background-color: var(--navbar-bg);
+    color: var(--texto-claro);
     font-weight: 600;
-    text-transform: uppercase;
     font-size: 0.85rem;
-    letter-spacing: 0.5px;
     padding: 15px;
+    border: none;
 }
 
 .table tbody td {
     padding: 15px;
+    vertical-align: middle;
 }
 
-.badge {
-    padding: 8px 12px;
-    border-radius: 6px;
-}
+.badge.bg-success { background-color: var(--cor-sucesso) !important; }
+.badge.bg-danger { background-color: var(--cor-perigo) !important; }
+.badge.bg-warning { background-color: var(--cor-aviso) !important; }
+.badge.bg-primary { background-color: var(--cor-info) !important; }
 
 @media (max-width: 768px) {
-    .sidebar {
-        width: 80px;
-        padding: 10px !important;
-    }
-    .sidebar h4, .sidebar span, .sidebar .nav-link i + span {
-        display: none; /* Esconde textos, deixa só ícones */
-    }
-    .sidebar .nav-link {
-        text-align: center;
-    }
+    .sidebar { width: 80px; }
+    .sidebar h4, .sidebar .nav-link span { display: none; }
+    .sidebar .nav-link { justify-content: center; }
 }
