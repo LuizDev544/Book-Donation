@@ -2,8 +2,8 @@ package BookDonation.demo.presentation.Controller;
 
 import BookDonation.demo.presentation.DTO.LivroRequestDTO;
 import org.springframework.ui.Model;
-import BookDonation.demo.Domain.Model.Livro;
-import BookDonation.demo.Domain.Service.LivroService;
+import BookDonation.demo.Domain.Model.*;
+import BookDonation.demo.Domain.Service.*;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
