@@ -5,6 +5,7 @@ import BookDonation.demo.Domain.Model.ValueObjects.*;
 import BookDonation.demo.Domain.Repository.LivroRepository;
 import BookDonation.demo.presentation.DTO.LivroRequestDTO;
 import jakarta.transaction.Transactional;
+import BookDonation.demo.Domain.Model.Admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
