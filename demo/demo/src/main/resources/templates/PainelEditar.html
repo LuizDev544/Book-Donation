@@ -72,6 +72,22 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nivelConservacao" class="form-label">Nível de Conservação</label>
+                        <select class="form-select" id="nivelConservacao" name="nivelConservacao" required>
+                            <option value="Novo" th:selected="${livro.detalhesCondicao?.nivelConservacao == 'Novo'}">Novo</option>
+                            <option value="Usado (Bom Estado)" th:selected="${livro.detalhesCondicao?.nivelConservacao == 'Usado (Bom Estado)'}">Usado (Bom Estado)</option>
+                            <option value="Com Marcas de Uso" th:selected="${livro.detalhesCondicao?.nivelConservacao == 'Com Marcas de Uso'}">Com Marcas de Uso</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="observacoesExtras" class="form-label">Observações (Opcional)</label>
+                        <input type="text" class="form-control" id="observacoesExtras" name="observacoesExtras" th:value="${livro.detalhesCondicao?.observacoesExtras}">
+                    </div>
+                </div>
+
                 <div class="mb-3">
                     <label for="textoDescricao" class="form-label">Descrição / Resumo</label>
                     <textarea class="form-control" id="textoDescricao" name="textoDescricao" rows="3" th:text="${livro.descricao.texto}"></textarea>

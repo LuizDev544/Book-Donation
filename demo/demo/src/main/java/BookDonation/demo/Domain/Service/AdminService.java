@@ -15,11 +15,15 @@ public class AdminService {
     private AdminRepository adminRepository;
 
     public boolean validarAcesso(String emailDigitado, String senhaDigitada) {
-        
         Optional<Admin> adminOptional = adminRepository.findByEmail(new Email(emailDigitado));
 
         return adminOptional
                 .map((Admin admin) -> admin.autenticar(senhaDigitada))
                 .orElse(false);
+    }
+
+    public Admin buscarPorEmail(String emailDigitado) {
+        return adminRepository.findByEmail(new Email(emailDigitado))
+                .orElseThrow(() -> new IllegalArgumentException("Administrador não encontrado no banco de dados."));
     }
 }

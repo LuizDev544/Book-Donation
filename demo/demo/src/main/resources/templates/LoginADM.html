@@ -13,6 +13,9 @@
     <main class="login-wrapper">
         <div class="login-container">
             <h2>Login Admin</h2>
+            <div th:if="${erro}" style="color: #ff4d4d; background-color: #ffe6e6; padding: 10px; border-radius: 5px; text-align: center; margin-bottom: 15px;">
+                <span th:text="${erro}"></span>
+            </div>
             <form action="/admin/login" method="POST">
                 <div class="input-group">
                     <label>Email</label>

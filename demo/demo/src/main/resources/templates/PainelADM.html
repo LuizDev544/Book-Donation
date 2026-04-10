@@ -59,6 +59,7 @@
                                     <th>Idioma</th>
                                     <th>Ano</th>
                                     <th>Condição</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             
@@ -87,6 +88,7 @@
                                         </form>
                                     </td>
                                 </tr>
+                                
                                 <tr th:if="${#lists.isEmpty(livros)}">
                                     <td colspan="9" class="text-center text-muted py-4">
                                         Nenhum livro cadastrado ainda.

@@ -37,6 +37,21 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Ano de Lançamento</label>
+                        <input type="number" class="form-control" name="anoLancamento" placeholder="Ex: 1954">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Total de Páginas</label>
+                        <input type="number" class="form-control" name="quantidadePaginas" placeholder="Ex: 1200">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Idioma</label>
+                        <input type="text" class="form-control" name="nomeIdioma" placeholder="Ex: Português">
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Autor</label>
                         <input type="text" class="form-control" name="nomeAutor" placeholder="Ex: J.R.R. Tolkien">
@@ -57,28 +72,30 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Ano de Lançamento</label>
-                        <input type="number" class="form-control" name="anoLancamento" placeholder="Ex: 1954">
+                    <div class="col-md-6 mb-3">
+                        <label>Nível de Conservação</label>
+                        <select class="form-select" name="nivelConservacao">
+                            <option value="Novo">Novo</option>
+                            <option value="Usado (Bom Estado)">Usado (Bom Estado)</option>
+                            <option value="Com Marcas de Uso">Com Marcas de Uso</option>
+                        </select>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Total de Páginas</label>
-                        <input type="number" class="form-control" name="quantidadePaginas" placeholder="Ex: 1200">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Idioma</label>
-                        <input type="text" class="form-control" name="nomeIdioma" placeholder="Ex: Português">
+                    <div class="col-md-6 mb-3">
+                        <label>Observações (Opcional)</label>
+                        <input type="text" class="form-control" name="observacoesExtras">
                     </div>
                 </div>
 
-                <div class="mb-4">
-                    <label class="form-label">Descrição / Resumo</label>
-                    <textarea class="form-control" name="textoDescricao" rows="3" placeholder="Conte um pouco sobre a obra..."></textarea>
-                </div>
+                <div class="row">
+                    <div class="mb-4">
+                        <label class="form-label">Descrição / Resumo</label>
+                        <textarea class="form-control" name="textoDescricao" rows="3" placeholder="Conte um pouco sobre a obra..."></textarea>
+                    </div>
 
-                <div class="d-grid gap-3">
-                    <button type="submit" class="btn-salvar-doacao">Salvar Doação</button>
-                    <a href="/livros/painel" class="btn-cancelar">Cancelar</a>
+                    <div class="d-grid gap-3">
+                        <button type="submit" class="btn-salvar-doacao">Salvar Doação</button>
+                        <a href="/livros/painel" class="btn-cancelar">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>

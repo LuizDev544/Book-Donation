@@ -9,5 +9,8 @@ public record LivroRequestDTO(
     String nomeGenero,
     String nomeIdioma,
     int quantidadePaginas,
-    String statusInicial
+    String statusInicial,
+    Long idAdmin,
+    String nivelConservacao,
+    String observacoesExtras
 ) {}

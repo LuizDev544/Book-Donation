@@ -1,5 +1,7 @@
 package BookDonation.demo.Domain.Model;
 
+import java.util.List;
+
 import BookDonation.demo.Domain.Model.ValueObjects.Email;
 import BookDonation.demo.Domain.Model.ValueObjects.Senha;
 import jakarta.persistence.*;
@@ -22,6 +24,9 @@ public class Admin {
     @Embedded
     private Senha senha;
 
+    @OneToMany(mappedBy = "adminRegistrador") 
+    private List<Livro> livrosCadastrados;
+
     public Admin(Email email, Senha senha) {
         this.email = email;
         this.senha = senha;
@@ -32,6 +37,10 @@ public class Admin {
             return false;
         }
         return this.senha != null && this.senha.verificar(senhaDigitada);
+    }
+
+    public Long getId() {
+        return this.id;
     }
 
 }

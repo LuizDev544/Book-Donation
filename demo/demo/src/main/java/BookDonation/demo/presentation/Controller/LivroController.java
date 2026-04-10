@@ -1,8 +1,11 @@
 package BookDonation.demo.presentation.Controller;
 
 import BookDonation.demo.presentation.DTO.LivroRequestDTO;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.ui.Model;
 import BookDonation.demo.Domain.Model.*;
+import BookDonation.demo.Domain.Repository.AdminRepository;
 import BookDonation.demo.Domain.Service.*;
 
 import java.util.List;
@@ -19,24 +22,29 @@ public class LivroController {
     private LivroService livroService;
 
     @GetMapping("/cadastrar")
-    public String mostrarTelaCadastro() {
-        return "PainelCadastrar";
+        public String mostrarTelaCadastro(Model model) {
+            return "PainelCadastrar";
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrar(LivroRequestDTO dto, RedirectAttributes attributes) {
-        try {
-            livroService.criarLivro(dto);
-            
-            attributes.addFlashAttribute("mensagem", "Livro cadastrado com sucesso!");
+        public String cadastrar(LivroRequestDTO dto, HttpSession session, RedirectAttributes attributes) {
+            try {
+                Long idAdminLogado = (Long) session.getAttribute("adminLogadoId");
 
-            return "redirect:/livros/painel"; 
-        } catch (Exception e) {
-            attributes.addFlashAttribute("erro", "Erro ao cadastrar: " + e.getMessage());
+            if (idAdminLogado == null) {
+                return "redirect:/admin/login";
+            }
 
-            return "redirect:/livros/cadastrar"; 
+                livroService.criarLivro(dto, idAdminLogado);
+                
+                attributes.addFlashAttribute("mensagem", "Livro cadastrado com sucesso!");
+                return "redirect:/livros/painel"; 
+                
+            } catch (Exception e) {
+                attributes.addFlashAttribute("erro", "Erro ao cadastrar: " + e.getMessage());
+                return "redirect:/livros/cadastrar"; 
+            }
         }
-    }
 
     @GetMapping("/editar/{id}")
     public String mostrarTelaEditar(@PathVariable Long id, Model model, RedirectAttributes attributes) {

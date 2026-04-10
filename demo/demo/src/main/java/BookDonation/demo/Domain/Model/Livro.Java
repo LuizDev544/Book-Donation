@@ -35,6 +35,14 @@ public class Livro {
     @Embedded 
     private StatusLivro status;
 
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin adminRegistrador;
+
+    @OneToOne(cascade = CascadeType.ALL) 
+    @JoinColumn(name = "condicao_id")
+    private DetalhesCondicao detalhesCondicao;
+
     protected Livro() {}
 
     public Livro(String titulo, AnoLivro ano, Autor autor, Descricao descricao, Genero genero, Idioma idioma, Pagina pagina, StatusLivro status) {
@@ -62,6 +70,18 @@ public class Livro {
 
     public void tornarDisponivel() {
         this.status = StatusLivro.valueOf("DISPONIVEL");
+    }
+    
+    public void setAdminRegistrador(Admin admin) {
+        this.adminRegistrador = admin;
+    }
+
+    public void setDetalhesCondicao(DetalhesCondicao detalhes) {
+        this.detalhesCondicao = detalhes;
+    }
+
+    public DetalhesCondicao getDetalhesCondicao() {
+        return this.detalhesCondicao;
     }
 
     public Long getId() { return id; }
