@@ -66,7 +66,7 @@
                             <tbody>
                                 <tr th:each="livro : ${livros}">
                                     <td th:text="${livro.id}"></td>
-                                    <td><strong th:text="${livro.titulo}"></strong></td>
+                                    <td><strong th:text="${livro.titulo.texto}"></strong></td>
                                     <td th:text="${livro.descricao.texto}"></td>
                                     <td th:text="${livro.autor.nome}"></td>
                                     <td th:text="${livro.genero.nome}"></td>

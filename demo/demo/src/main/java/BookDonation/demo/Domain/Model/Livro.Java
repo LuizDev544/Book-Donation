@@ -11,8 +11,8 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String titulo; 
+    @Embedded
+    private Titulo titulo; 
 
     @Embedded
     private AnoLivro ano;
@@ -45,7 +45,7 @@ public class Livro {
 
     protected Livro() {}
 
-    public Livro(String titulo, AnoLivro ano, Autor autor, Descricao descricao, Genero genero, Idioma idioma, Pagina pagina, StatusLivro status) {
+    public Livro(Titulo titulo, AnoLivro ano, Autor autor, Descricao descricao, Genero genero, Idioma idioma, Pagina pagina, StatusLivro status) {
         this.titulo = titulo;
         this.ano = ano;
         this.autor = autor;
@@ -57,7 +57,7 @@ public class Livro {
     }
 
 
-    public void atualizarDados(String novoTitulo, AnoLivro novoAno, Autor novoAutor, Descricao novaDescricao, Genero novoGenero, Idioma novoIdioma, Pagina novaPagina, StatusLivro novoStatus) {
+    public void atualizarDados(Titulo novoTitulo, AnoLivro novoAno, Autor novoAutor, Descricao novaDescricao, Genero novoGenero, Idioma novoIdioma, Pagina novaPagina, StatusLivro novoStatus) {
         this.titulo = novoTitulo;
         this.ano = novoAno;
         this.autor = novoAutor;
@@ -84,8 +84,17 @@ public class Livro {
         return this.detalhesCondicao;
     }
 
+    public void atualizarCondicao(String nivel, String observacoes) {
+    if (this.detalhesCondicao == null) {
+        this.detalhesCondicao = new DetalhesCondicao(nivel, observacoes);
+        return;
+    }
+    
+    this.detalhesCondicao.atualizarDados(nivel, observacoes);
+}
+
     public Long getId() { return id; }
-    public String getTitulo() { return titulo; }
+    public Titulo getTitulo() { return titulo; }
     public AnoLivro getAno() { return ano; }
     public Autor getAutor() { return autor; }
     public Descricao getDescricao() { return descricao; }

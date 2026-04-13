@@ -27,6 +27,7 @@ public class LivroService {
         Admin adminResponsavel = adminRepository.findById(idAdmin)
             .orElseThrow(() -> new IllegalArgumentException("Administrador não encontrado no banco de dados."));
 
+        Titulo titulo       = new Titulo(dto.titulo());
         AnoLivro ano        = new AnoLivro(dto.anoLancamento());
         Autor autor         = new Autor(dto.nomeAutor());
         Descricao descricao = new Descricao(dto.textoDescricao());
@@ -37,7 +38,7 @@ public class LivroService {
 
         DetalhesCondicao detalhes = new DetalhesCondicao(dto.nivelConservacao(), dto.observacoesExtras());
 
-        Livro novoLivro = new Livro(dto.titulo(), ano, autor, descricao, genero, idioma, pagina, status);
+        Livro novoLivro = new Livro(titulo, ano, autor, descricao, genero, idioma, pagina, status);
 
         novoLivro.setAdminRegistrador(adminResponsavel); 
         novoLivro.setDetalhesCondicao(detalhes); 
@@ -46,31 +47,24 @@ public class LivroService {
     }
 
     @Transactional
-        public Livro atualizarLivro(Long id, LivroRequestDTO dto) {
-            Livro livroExistente = buscarPorId(id);
+    public Livro atualizarLivro(Long id, LivroRequestDTO dto) {
+        Livro livroExistente = buscarPorId(id);
 
-            AnoLivro ano        = new AnoLivro(dto.anoLancamento());
-            Autor autor         = new Autor(dto.nomeAutor());
-            Descricao descricao = new Descricao(dto.textoDescricao());
-            Genero genero       = new Genero(dto.nomeGenero());
-            Idioma idioma       = new Idioma(dto.nomeIdioma());
-            Pagina pagina       = new Pagina(dto.quantidadePaginas());
-            StatusLivro status  = new StatusLivro(dto.statusInicial());
+        Titulo titulo       = new Titulo(dto.titulo());
+        AnoLivro ano        = new AnoLivro(dto.anoLancamento());
+        Autor autor         = new Autor(dto.nomeAutor());
+        Descricao descricao = new Descricao(dto.textoDescricao());
+        Genero genero       = new Genero(dto.nomeGenero());
+        Idioma idioma       = new Idioma(dto.nomeIdioma());
+        Pagina pagina       = new Pagina(dto.quantidadePaginas());
+        StatusLivro status  = new StatusLivro(dto.statusInicial());
 
-            livroExistente.atualizarDados(dto.titulo(), ano, autor, descricao, genero, idioma, pagina, status);
-                    
-            DetalhesCondicao condicaoAtual = livroExistente.getDetalhesCondicao();
+        livroExistente.atualizarDados(titulo, ano, autor, descricao, genero, idioma, pagina, status);
+        
+        livroExistente.atualizarCondicao(dto.nivelConservacao(), dto.observacoesExtras());
 
-            if (condicaoAtual != null) {
-                condicaoAtual.atualizarDados(dto.nivelConservacao(), dto.observacoesExtras());
-            } else {
-                DetalhesCondicao novaCondicao = new DetalhesCondicao(dto.nivelConservacao(), dto.observacoesExtras());
-                livroExistente.setDetalhesCondicao(novaCondicao);
-            }
-            
-            return livroRepository.save(livroExistente);
-        }
-
+        return livroRepository.save(livroExistente);
+    }
     public void excluirLivro(Long id) {
         Livro livro = buscarPorId(id);
         
