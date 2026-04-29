@@ -1,6 +1,6 @@
 import React from 'react';
 import AppRoutes from './AppRoutes';
-import './styles/Global.css'; // Seu CSS global aqui
+import './styles/Global.css';
 
 function App() {
   return <AppRoutes />;
