@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
     "axios": "^1.16.0",
     "bootstrap": "^5.3.8",
     "cra-template-redux": "2.0.0",
@@ -10,7 +12,8 @@
     "react-dom": "^19.2.5",
     "react-router-dom": "^7.15.0",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.4.1"
+    "styled-components": "^6.4.1",
+    "typescript": "^6.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-dom": "^19.2.3"
   }
 }
